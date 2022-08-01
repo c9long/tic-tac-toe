@@ -86,17 +86,17 @@ import './index.css';
 
       squares[i]=this.state.xIsNext ? 'X' : 'O';
       this.setState({
-        history: [history.concat(
+        history: history.concat(
           [{
             squares: squares,
           }]
-        )],
+        ),
         stepNumber: history.length,
         xIsNext: !this.state.xIsNext,
       });
     }
 
-    jumpTo = (step) => {
+    jumpTo(step) {
       this.setState({
         stepNumber: step,
         xIsNext: (step % 2) === 0,
@@ -105,7 +105,7 @@ import './index.css';
 
     render() {
       const history = this.state.history;
-      const current = history[this.state.stepNumber - 1];
+      const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares);
 
       const moves = history.map((step, move) => {
